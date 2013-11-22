@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+
+  "name": "Hidden Facebook Like Blocker",
+  "description": "This extension will block hidden Iframe Facebook Like",
+  "version": "1.0",
+  "background": { "scripts": ["background.js"] },
+  "icons":{
+    "128":"images/Icon-128.png",
+    "48":"images/Icon-48.png",
+    "16":"images/Icon-16.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "default_icon": "images/Icon-19.png",
+      "19": "images/Icon-19.png",
+      "38": "images/Icon-38.png"
+    },
+    "default_title": "Hidden Facebook Like Blocker"
+  },
+  "content_scripts": [ {
+    "all_frames": false,
+    "js": [ "hiddenfbblock.js" ],
+    "exclude_globs": [ "http://www.facebook.com", "https://www.facebook.com", "http://*.facebook.com", "https://*.facebook.com" ],
+    "matches": [ "http://*/*", "https://*/*" ],
+    "run_at": "document_end"
+  } ]
+}
