@@ -1,13 +1,15 @@
 var HiddenFBLikeBlocker = {
 
 	numberIFBlocked: 0,
+	elementRm: null,
 	// Check element in dom is Invisible
 	checkElmInVisible: function (elm){
 		if(elm)
 		{
 			var style = getComputedStyle(elm, null);
 
-			if (style && (parseFloat('0' + style.opacity) < 0.1 || style.visibility == 'hidden')) {					
+			if (style && (parseFloat('0' + style.opacity) < 0.1 || style.visibility == 'hidden')) {	
+				this.elementRm = elm;				
 				return true;
 			} else {
 				return this.checkElmInVisible(elm.parentNode);
@@ -29,7 +31,9 @@ var HiddenFBLikeBlocker = {
 				if(src.match(/facebook.com\/plugins\/like\.php/g)) {
 					if(this.checkElmInVisible(iframe)){
 						this.numberIFBlocked++;
-						iframe.parentNode.removeChild(iframe);
+						if(this.elementRm){
+							this.elementRm.parentNode.removeChild(this.elementRm);
+						}
 					}
 				}
 			}

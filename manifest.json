@@ -3,7 +3,7 @@
 
   "name": "Hidden Facebook Like Blocker",
   "description": "This extension will block hidden Iframe Facebook Like",
-  "version": "1.0",
+  "version": "1.0.1",
   "background": { "scripts": ["background.js"] },
   "icons":{
     "128":"images/Icon-128.png",
